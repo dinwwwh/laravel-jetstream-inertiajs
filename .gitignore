@@ -16,3 +16,5 @@ yarn-error.log
 
 .php-cs-fixer.cache
 .eslintcache
+_ide_helper_models.php
+_ide_helper.php
