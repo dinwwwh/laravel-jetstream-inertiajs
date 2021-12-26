@@ -1,28 +1,32 @@
 {
     "private": true,
     "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
+        "dev": "vite",
+        "build": "vite build"
     },
-    "devDependencies": {
-        "@inertiajs/inertia": "^0.10.0",
-        "@inertiajs/inertia-vue3": "^0.5.1",
+    "dependencies": {
+        "@inertiajs/inertia": "^0.10.1",
+        "@inertiajs/inertia-vue3": "^0.5.2",
         "@inertiajs/progress": "^0.2.6",
         "@tailwindcss/forms": "^0.4.0",
         "@tailwindcss/typography": "^0.5.0",
-        "@vue/compiler-sfc": "^3.0.5",
+        "@vitejs/plugin-vue": "^2.0.1",
+        "@vue/compiler-sfc": "^3.2.26",
+        "autoprefixer": "^10.4.0",
         "axios": "^0.21",
-        "laravel-mix": "^6.0.6",
-        "lodash": "^4.17.19",
-        "postcss": "^8.1.14",
+        "lodash": "^4.17.21",
+        "postcss": "^8.4.5",
         "postcss-import": "^12.0.1",
-        "tailwindcss": "^3.0.0",
-        "vue": "^3.0.5",
+        "tailwindcss": "^3.0.7",
+        "vite": "^2.7.7",
+        "vue": "^3.2.26",
         "vue-loader": "^16.1.2"
+    },
+    "devDependencies": {
+        "@types/lodash": "^4.14.178",
+        "@types/node": "^17.0.4",
+        "@types/ziggy-js": "^1.3.0",
+        "@vuedx/typescript-plugin-vue": "^0.7.4",
+        "typescript": "^4.5.4"
     }
 }

@@ -9,18 +9,19 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
-        <!-- Scripts -->
         @routes
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        @production
+            @php
+                $manifest = json_decode(file_get_contents(public_path('dist/manifest.json')), true);
+            @endphp
+            <script type="module" src="/dist/{{ $manifest['resources/js/app.ts']['file'] }}"></script>
+            <link rel="stylesheet" href="/dist/{{ $manifest['resources/js/app.ts']['css'][0] }}">
+        @else
+            <script type="module" src="http://localhost:3030/@vite/client"></script>
+            <script type="module" src="http://localhost:3030/resources/js/app.ts"></script>
+        @endproduction
     </head>
     <body class="font-sans antialiased">
         @inertia
-
-        @env ('local')
-            <script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script>
-        @endenv
     </body>
 </html>
