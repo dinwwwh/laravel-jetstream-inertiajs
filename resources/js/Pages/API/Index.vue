@@ -29,6 +29,7 @@ export default defineComponent({
         ApiTokenManager,
         AppLayout,
     },
+    layout: null,
 
     props: {
         tokens: {

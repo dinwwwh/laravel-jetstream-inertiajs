@@ -137,6 +137,7 @@ export default defineComponent({
         JetValidationErrors,
         Link,
     },
+    layout: null,
 
     data() {
         return {

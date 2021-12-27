@@ -73,6 +73,7 @@ export default defineComponent({
         UpdatePasswordForm,
         UpdateProfileInformationForm,
     },
+    layout: null,
 
     props: {
         sessions: {

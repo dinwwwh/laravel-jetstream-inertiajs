@@ -28,5 +28,6 @@ export default defineComponent({
         AppLayout,
         Welcome,
     },
+    layout: null,
 });
 </script>

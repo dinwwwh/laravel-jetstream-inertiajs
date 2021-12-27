@@ -92,6 +92,7 @@ export default defineComponent({
         JetLabel,
         JetValidationErrors,
     },
+    layout: null,
 
     data() {
         return {

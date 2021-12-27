@@ -57,6 +57,7 @@ export default defineComponent({
         JetButton,
         Link,
     },
+    layout: null,
 
     props: {
         status: {

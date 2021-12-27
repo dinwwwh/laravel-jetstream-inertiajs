@@ -29,6 +29,8 @@ export default defineComponent({
         Head,
         JetAuthenticationCardLogo,
     },
+    layout: null,
+
     props: {
         policy: {
             type: String,

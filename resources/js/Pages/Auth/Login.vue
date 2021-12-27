@@ -93,6 +93,7 @@ export default defineComponent({
         JetValidationErrors,
         Link,
     },
+    layout: null,
 
     props: {
         canResetPassword: Boolean,

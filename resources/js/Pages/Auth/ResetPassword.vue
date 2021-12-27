@@ -82,6 +82,7 @@ export default defineComponent({
         JetLabel,
         JetValidationErrors,
     },
+    layout: null,
 
     props: {
         email: {

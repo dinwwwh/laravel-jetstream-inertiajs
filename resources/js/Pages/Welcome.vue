@@ -326,6 +326,7 @@ export default defineComponent({
         Head,
         Link,
     },
+    layout: null,
 
     props: {
         canLogin: Boolean,

@@ -5,6 +5,8 @@ import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 
+import DefaultLayout from './Layouts/Default.vue';
+
 /**
  * ! A minimize downside, it will import unnecessary partial files
  * (./Pages/ ** /Partials/*.vue)
@@ -17,7 +19,10 @@ const appName =
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name: string) => {
-        const page = pages[`./Pages/${name}.vue`];
+        const page = pages[`./Pages/${name}.vue`].default;
+
+        if (page.layout !== null) page.layout ??= DefaultLayout;
+
         return page as any;
     },
     setup({ el, app, props, plugin }) {
