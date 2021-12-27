@@ -11,4 +11,11 @@ module.exports = {
     },
     plugins: ['vue', '@typescript-eslint'],
     rules: {},
+    settings: {
+        'import/resolver': {
+            alias: {
+                map: [['@', './resources/js']],
+            },
+        },
+    },
 };

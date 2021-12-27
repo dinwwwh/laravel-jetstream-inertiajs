@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import lodash from 'lodash';
 import axios from 'axios';
 import ziggy from 'ziggy-js';

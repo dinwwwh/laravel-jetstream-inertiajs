@@ -3,7 +3,8 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "lint:vue": "vue-tsc --noEmit --skipLibCheck"
     },
     "dependencies": {
         "@inertiajs/inertia": "^0.10.1",
@@ -21,7 +22,8 @@
         "tailwindcss": "^3.0.7",
         "vite": "^2.7.7",
         "vue": "^3.2.26",
-        "vue-loader": "^16.1.2"
+        "vue-loader": "^16.1.2",
+        "ziggy-js": "^1.4.2"
     },
     "devDependencies": {
         "@commitlint/cli": "^16.0.0",
@@ -35,6 +37,7 @@
         "eslint": "^8.5.0",
         "eslint-config-airbnb-base": "^15.0.0",
         "eslint-config-prettier": "^8.3.0",
+        "eslint-import-resolver-alias": "^1.1.2",
         "eslint-plugin-import": "^2.25.3",
         "eslint-plugin-vue": "^8.2.0",
         "husky": "^7.0.4",
@@ -48,9 +51,6 @@
             "prettier --write",
             "eslint --cache --fix"
         ],
-        "*.vue": [
-            "vue-tsc --noEmit --skipLibCheck"
-        ],
-        "*.php": "./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php"
+        "*.{php}": "./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php -vvv"
     }
 }
