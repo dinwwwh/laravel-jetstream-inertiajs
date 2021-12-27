@@ -6,10 +6,16 @@
     </div>
 </template>
 
-<script>
-    import { defineComponent } from 'vue'
+<script lang="ts">
+import { defineComponent } from 'vue';
 
-    export default defineComponent({
-        props: ['message']
-    })
+export default defineComponent({
+    name: 'JetInputError',
+    props: {
+        message: {
+            type: String,
+            default: '',
+        },
+    },
+});
 </script>

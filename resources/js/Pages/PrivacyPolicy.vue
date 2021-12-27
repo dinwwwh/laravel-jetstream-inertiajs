@@ -1,4 +1,5 @@
 <template>
+    <!-- eslint-disable vue/no-v-html -->
     <Head title="Privacy Policy" />
 
     <div class="font-sans text-gray-900 antialiased">
@@ -8,24 +9,31 @@
                     <jet-authentication-card-logo />
                 </div>
 
-                <div v-html="policy" class="w-full sm:max-w-2xl mt-6 p-6 bg-white shadow-md overflow-hidden sm:rounded-lg prose">
-                </div>
+                <div
+                    class="w-full sm:max-w-2xl mt-6 p-6 bg-white shadow-md overflow-hidden sm:rounded-lg prose"
+                    v-html="policy"
+                ></div>
             </div>
         </div>
     </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+<script lang="ts">
+import { defineComponent } from 'vue';
 import { Head } from '@inertiajs/inertia-vue3';
-import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue'
+import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue';
 
 export default defineComponent({
-    props: ['policy'],
-
+    name: 'PrivacyPolicyPage',
     components: {
         Head,
         JetAuthenticationCardLogo,
     },
-})
+    props: {
+        policy: {
+            type: String,
+            required: true,
+        },
+    },
+});
 </script>

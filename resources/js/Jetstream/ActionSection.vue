@@ -13,13 +13,14 @@
     </div>
 </template>
 
-<script>
-    import { defineComponent } from 'vue'
-    import JetSectionTitle from './SectionTitle.vue'
+<script lang="ts">
+import { defineComponent } from 'vue';
+import JetSectionTitle from './SectionTitle.vue';
 
-    export default defineComponent({
-        components: {
-            JetSectionTitle,
-        }
-    })
+export default defineComponent({
+    name: 'JetAccountSection',
+    components: {
+        JetSectionTitle,
+    },
+});
 </script>

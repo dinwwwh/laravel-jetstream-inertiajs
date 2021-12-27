@@ -5,10 +5,16 @@
     </label>
 </template>
 
-<script>
-    import { defineComponent } from 'vue'
+<script lang="ts">
+import { defineComponent } from 'vue';
 
-    export default defineComponent({
-        props: ['value']
-    })
+export default defineComponent({
+    name: 'JetLabel',
+    props: {
+        value: {
+            type: String,
+            default: '',
+        },
+    },
+});
 </script>

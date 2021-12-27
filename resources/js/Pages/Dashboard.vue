@@ -16,15 +16,17 @@
     </app-layout>
 </template>
 
-<script>
-    import { defineComponent } from 'vue'
-    import AppLayout from '@/Layouts/AppLayout.vue'
-    import Welcome from '@/Jetstream/Welcome.vue'
+<script lang="ts">
+import { defineComponent } from 'vue';
 
-    export default defineComponent({
-        components: {
-            AppLayout,
-            Welcome,
-        },
-    })
+import AppLayout from '@/Layouts/AppLayout.vue';
+import Welcome from '@/Jetstream/Welcome.vue';
+
+export default defineComponent({
+    name: 'DashboardPage',
+    components: {
+        AppLayout,
+        Welcome,
+    },
+});
 </script>
