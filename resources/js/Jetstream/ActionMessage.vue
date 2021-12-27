@@ -1,6 +1,10 @@
 <template>
     <div>
-        <transition leave-active-class="transition ease-in duration-1000" leave-from-class="opacity-100" leave-to-class="opacity-0">
+        <transition
+            leave-active-class="transition ease-in duration-1000"
+            leave-from-class="opacity-100"
+            leave-to-class="opacity-0"
+        >
             <div v-show="on" class="text-sm text-gray-600">
                 <slot />
             </div>
@@ -8,10 +12,16 @@
     </div>
 </template>
 
-<script>
-    import { defineComponent } from 'vue'
+<script lang="ts">
+import { defineComponent } from 'vue';
 
-    export default defineComponent({
-        props: ['on'],
-    })
+export default defineComponent({
+    name: 'ActionMessage',
+    props: {
+        on: {
+            type: Boolean,
+            default: false,
+        },
+    },
+});
 </script>
