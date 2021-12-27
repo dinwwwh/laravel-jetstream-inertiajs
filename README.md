@@ -22,7 +22,7 @@ Special command `php artisan ide-helper:models --nowrite` require you connected 
 
 ## Lint typescript files of vuejs
 
-A lint command for check issue typescript vue files. This command is powerful but used too much resource pc then I not add it to lint-staged
+A lint command for check issue typescript vue files. This command is powerful but used too much resource pc then I not add it to lint-staged and if add to lint-staged it not work correctly (Currently I don't know)
 
 ```bash
     npm run lint:vue

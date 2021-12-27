@@ -51,6 +51,6 @@
             "prettier --write",
             "eslint --cache --fix"
         ],
-        "*.{php}": "./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php -vvv"
+        "*.php": "./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php -vvv"
     }
 }
