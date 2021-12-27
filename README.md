@@ -1,13 +1,16 @@
-# Account Shop
+# Jetstream Laravel + Inertiajs + Vite + typescript
 
-A web app supply tools, and system for someone sell game accounts
+A template for above powerful technique
 
 
-## For developers
+## Install dependencies
 
-### Prepare
+```bash
+    npm install
+    composer install
+```
 
-1. IDE you can run following command line to generate ide helper files
+## Generate helper files for php IDE
 
 Special command `php artisan ide-helper:models --nowrite` require you connected database
 
@@ -15,4 +18,12 @@ Special command `php artisan ide-helper:models --nowrite` require you connected 
     php artisan ide-helper:generate
     php artisan ide-helper:meta
     php artisan ide-helper:models --nowrite
+```
+
+## Lint typescript files of vuejs
+
+A lint command for check issue typescript vue files. This command is powerful but used too much resource pc then I not add it to lint-staged
+
+```bash
+    npm run lint:vue
 ```
