@@ -27,3 +27,16 @@ A lint command for check issue typescript vue files. This command is powerful bu
 ```bash
     npm run lint:vue
 ```
+
+## Handling 
+
+Recommend actions for you when a case occurred
+
+### Updated Models
+
+You should fresh `ide model helper file` and fresh `declared model typescript file` (both require connected database)
+
+```bash
+    php artisan ide-helper:models --nowrite
+    php artisan typescript:generate
+```
