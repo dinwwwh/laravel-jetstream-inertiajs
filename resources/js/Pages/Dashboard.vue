@@ -9,7 +9,7 @@
         </JetContainer>
     </header>
 
-    <JetContainer as="main" class="py-12">
+    <JetContainer is="main" class="py-12">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <welcome />
         </div>

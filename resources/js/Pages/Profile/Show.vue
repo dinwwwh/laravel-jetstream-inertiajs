@@ -9,7 +9,7 @@
         </JetContainer>
     </header>
 
-    <JetContainer as="main" class="py-12">
+    <JetContainer is="main" class="py-12">
         <div v-if="($page as any).props.jetstream.canUpdateProfileInformation">
             <update-profile-information-form
                 :user="($page as any).props.user"

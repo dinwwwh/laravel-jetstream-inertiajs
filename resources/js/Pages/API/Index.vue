@@ -9,7 +9,7 @@
         </JetContainer>
     </header>
 
-    <JetContainer as="main" class="py-12">
+    <JetContainer is="main" class="py-12">
         <api-token-manager
             :tokens="tokens"
             :available-permissions="availablePermissions"
