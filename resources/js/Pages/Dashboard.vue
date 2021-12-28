@@ -1,33 +1,34 @@
 <template>
-    <app-layout title="Dashboard">
-        <template #header>
+    <Head title="Dashboard" />
+
+    <header class="bg-white shadow">
+        <JetContainer class="py-6 px-4">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Dashboard
             </h2>
-        </template>
+        </JetContainer>
+    </header>
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <welcome />
-                </div>
-            </div>
+    <JetContainer as="main" class="py-12">
+        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <welcome />
         </div>
-    </app-layout>
+    </JetContainer>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { Head } from '@inertiajs/inertia-vue3';
 
-import AppLayout from '@/Layouts/AppLayout.vue';
 import Welcome from '@/Jetstream/Welcome.vue';
+import JetContainer from '@/Jetstream/Container.vue';
 
 export default defineComponent({
     name: 'DashboardPage',
     components: {
-        AppLayout,
         Welcome,
+        JetContainer,
+        Head,
     },
-    layout: null,
 });
 </script>

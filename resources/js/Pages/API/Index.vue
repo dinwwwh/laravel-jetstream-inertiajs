@@ -1,35 +1,37 @@
 <template>
-    <app-layout title="API Tokens">
-        <template #header>
+    <Head title="API Tokens" />
+
+    <header class="bg-white shadow">
+        <JetContainer class="py-6 px-4">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 API Tokens
             </h2>
-        </template>
+        </JetContainer>
+    </header>
 
-        <div>
-            <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-                <api-token-manager
-                    :tokens="tokens"
-                    :available-permissions="availablePermissions"
-                    :default-permissions="defaultPermissions"
-                />
-            </div>
-        </div>
-    </app-layout>
+    <JetContainer as="main" class="py-12">
+        <api-token-manager
+            :tokens="tokens"
+            :available-permissions="availablePermissions"
+            :default-permissions="defaultPermissions"
+        />
+    </JetContainer>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
+import { Head } from '@inertiajs/inertia-vue3';
+
 import ApiTokenManager from '@/Pages/API/Partials/ApiTokenManager.vue';
-import AppLayout from '@/Layouts/AppLayout.vue';
+import JetContainer from '@/Jetstream/Container.vue';
 
 export default defineComponent({
     name: 'ApiIndexPage',
     components: {
         ApiTokenManager,
-        AppLayout,
+        Head,
+        JetContainer,
     },
-    layout: null,
 
     props: {
         tokens: {
