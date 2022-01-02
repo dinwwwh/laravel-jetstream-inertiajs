@@ -3,14 +3,11 @@
 namespace Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class TwoFactorAuthenticationSettingsTest extends TestCase
 {
-    use RefreshDatabase;
-
-    public function test_two_factor_authentication_can_be_enabled()
+    public function testTwoFactorAuthenticationCanBeEnabled(): void
     {
         $this->actingAs($user = User::factory()->create());
 
@@ -18,11 +15,11 @@ class TwoFactorAuthenticationSettingsTest extends TestCase
 
         $response = $this->post('/user/two-factor-authentication');
 
-        $this->assertNotNull($user->fresh()->two_factor_secret);
-        $this->assertCount(8, $user->fresh()->recoveryCodes());
+        static::assertNotNull($user->fresh()->two_factor_secret);
+        static::assertCount(8, $user->fresh()->recoveryCodes());
     }
 
-    public function test_recovery_codes_can_be_regenerated()
+    public function testRecoveryCodesCanBeRegenerated(): void
     {
         $this->actingAs($user = User::factory()->create());
 
@@ -35,11 +32,11 @@ class TwoFactorAuthenticationSettingsTest extends TestCase
 
         $this->post('/user/two-factor-recovery-codes');
 
-        $this->assertCount(8, $user->recoveryCodes());
-        $this->assertCount(8, array_diff($user->recoveryCodes(), $user->fresh()->recoveryCodes()));
+        static::assertCount(8, $user->recoveryCodes());
+        static::assertCount(8, array_diff($user->recoveryCodes(), $user->fresh()->recoveryCodes()));
     }
 
-    public function test_two_factor_authentication_can_be_disabled()
+    public function testTwoFactorAuthenticationCanBeDisabled(): void
     {
         $this->actingAs($user = User::factory()->create());
 
@@ -47,10 +44,10 @@ class TwoFactorAuthenticationSettingsTest extends TestCase
 
         $this->post('/user/two-factor-authentication');
 
-        $this->assertNotNull($user->fresh()->two_factor_secret);
+        static::assertNotNull($user->fresh()->two_factor_secret);
 
         $this->delete('/user/two-factor-authentication');
 
-        $this->assertNull($user->fresh()->two_factor_secret);
+        static::assertNull($user->fresh()->two_factor_secret);
     }
 }
