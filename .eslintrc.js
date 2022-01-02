@@ -15,12 +15,25 @@ module.exports = {
         sourceType: 'module',
     },
     plugins: ['vue', '@typescript-eslint', 'tailwindcss'],
-    rules: {},
-    settings: {
-        'import/resolver': {
-            alias: {
-                map: [['@', './resources/js']],
+    rules: {
+        'import/extensions': 'off',
+        'import/no-unresolved': 'off',
+    },
+    overrides: [
+        {
+            files: ['**.ts', '**.vue'],
+            // excludedFiles: '*.d.ts',
+            rules: {
+                'no-undef': 'off',
             },
         },
-    },
+        {
+            files: ['**.d.ts'],
+            rules: {
+                'no-use-before-define': 'off',
+                'no-unused-vars': 'off',
+                'no-shadow': 'off',
+            },
+        },
+    ],
 };

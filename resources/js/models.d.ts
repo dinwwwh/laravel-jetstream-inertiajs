@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /**
  * This file is auto generated using 'php artisan typescript:generate'
  *
