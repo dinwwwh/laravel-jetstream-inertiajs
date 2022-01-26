@@ -3,18 +3,13 @@ module.exports = {
         browser: true,
         es2021: true,
     },
-    extends: [
-        'plugin:vue/vue3-recommended',
-        'airbnb-base',
-        'prettier',
-        'plugin:tailwindcss/recommended',
-    ],
+    extends: ['plugin:vue/vue3-recommended', 'airbnb-base', 'prettier'],
     parserOptions: {
         ecmaVersion: 13,
         parser: '@typescript-eslint/parser',
         sourceType: 'module',
     },
-    plugins: ['vue', '@typescript-eslint', 'tailwindcss'],
+    plugins: ['vue', '@typescript-eslint'],
     rules: {
         'import/extensions': 'off',
         'import/no-unresolved': 'off',
