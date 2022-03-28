@@ -19,6 +19,17 @@ $rules = [
     'php_unit_test_class_requires_covers' => false,
 
     'declare_strict_types' => false,
+    'phpdoc_no_alias_tag' => [
+        'replacements' => [
+            'property-read' => 'property',
+            'property-write' => 'property',
+            'link' => 'see',
+            // 'type' => 'var',
+            // Disable above replacement because it's will replace @typescript to @varscript
+            // That not expected when use `spatie/laravel-typescript-transformer` package
+        ],
+    ],
+    'phpdoc_to_comment' => false,
 ];
 
 $finder = Finder::create()

@@ -34,9 +34,29 @@ Recommend actions for you when a case occurred
 
 ### Updated Models
 
-You should fresh `ide model helper file` and fresh `declared model typescript file` (both require connected database)
+You should fresh `ide model helper file`
 
 ```bash
     php artisan ide-helper:models --nowrite
-    php artisan typescript:generate
+```
+
+## Generate typescript
+
+Use the `spatie/laravel-typescript-transformer` to transform a php type to typescript
+
+Firstly you Secondly you should
+ add `@typescript` phpdoc to php type
+
+```php
+    /** @typescript */
+    class FetchedCardType
+    {
+        //
+    }
+```
+
+Secondly you should run special command to generate it to typescript
+
+```bash
+    php artisan typescript:transform
 ```

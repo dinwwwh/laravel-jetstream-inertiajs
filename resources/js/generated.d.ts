@@ -1,11 +1,6 @@
-/**
- * This file is auto generated using 'php artisan typescript:generate'
- *
- * Changes to this file will be lost when the command is run again
- */
-
 declare namespace App.Models {
-    export interface User {
+    export type User = {
+        readonly profile_photo_url: any;
         id: number;
         name: string;
         email: string;
@@ -18,6 +13,13 @@ declare namespace App.Models {
         updated_at: string | null;
         two_factor_secret: string | null;
         two_factor_recovery_codes: string | null;
-        readonly profile_photo_url?: any;
-    }
+        tokens: any;
+        notifications: any;
+        readNotifications: any;
+        unreadNotifications: any;
+        readonly tokens_count: number;
+        readonly notifications_count: number;
+        readonly readNotifications_count: number;
+        readonly unreadNotifications_count: number;
+    };
 }
