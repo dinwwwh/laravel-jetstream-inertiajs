@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Casts\AsEncryptedArrayObject;
 use Illuminate\Database\Eloquent\Casts\AsEncryptedCollection;
 use ReflectionClass;
+use ReflectionFunction;
 use ReflectionMethod;
 use ReflectionUnionType;
 use Spatie\TypeScriptTransformer\Structures\TransformedType;
@@ -31,7 +32,7 @@ abstract class BaseTransformer implements Transformer
     /**
      * get return typescript of a php method.
      */
-    public static function getReturnedTypeScript(ReflectionMethod $method): string
+    public static function getReturnedTypeScript(ReflectionMethod|ReflectionFunction $method): string
     {
         $types = $method->getReturnType() instanceof ReflectionUnionType
             ? $method->getReturnType()->getTypes()

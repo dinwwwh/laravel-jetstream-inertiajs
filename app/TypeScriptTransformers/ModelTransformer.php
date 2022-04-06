@@ -4,6 +4,7 @@ namespace App\TypeScriptTransformers;
 
 use Doctrine\DBAL\Schema\Column;
 use Doctrine\DBAL\Types\Types;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -17,6 +18,7 @@ use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Collection;
 use ReflectionClass;
+use ReflectionFunction;
 use ReflectionMethod;
 use Spatie\TypeScriptTransformer\Structures\TransformedType;
 use Str;
@@ -53,6 +55,7 @@ class ModelTransformer extends BaseTransformer
             '{'
             .collect([ // Order is important
                 $this->getAccessors(),
+                $this->getNewAccessors(),
                 $this->getProperties(),
                 $this->getRelations(),
                 $this->getManyRelations(),
@@ -116,6 +119,29 @@ class ModelTransformer extends BaseTransformer
         ;
     }
 
+    /** Transform new accessors to typescript */
+    protected function getNewAccessors(): string
+    {
+        return $this->methods
+            ->filter(fn (ReflectionMethod $method) => Attribute::class === $method->getReturnType()?->getName())
+            ->mapWithKeys(fn (ReflectionMethod $method) => [$method->getName() => $method])
+            ->filter(fn (ReflectionMethod $method, string $property) => $this->shouldTransformField($property))
+
+            // Filter out methods that are set only
+            ->filter(fn (ReflectionMethod $method, string $property) => $method->invoke($this->model)->get)
+            ->map(function (ReflectionMethod $method, string $property) {
+                $property = Str::snake($property);
+                $setClosure = new ReflectionFunction($method->invoke($this->model)->get);
+                if ($method->invoke($this->model)->set) {
+                    return "'{$property}' : {$this->getReturnedTypeScript($setClosure)}";
+                }
+
+                return "readonly '{$property}' : {$this->getReturnedTypeScript($setClosure)}";
+            })
+            ->join(\PHP_EOL.'        ')
+        ;
+    }
+
     /** Transform relations to typescript */
     protected function getRelations(): string
     {
@@ -132,7 +158,11 @@ class ModelTransformer extends BaseTransformer
         return $this->getRelationMethods()
             ->filter(fn (ReflectionMethod $method) => $this->isManyRelation($method))
             ->filter(fn (ReflectionMethod $method) => $this->shouldTransformField($method->getName().'_count'))
-            ->map(fn (ReflectionMethod $method) => "readonly '{$method->getName()}_count' : number")
+            ->map(function (ReflectionMethod $method) {
+                $snackMethodName = Str::snake($method->getName());
+
+                return "readonly '{$snackMethodName}_count' : number";
+            })
             ->join(\PHP_EOL.'        ')
         ;
     }
