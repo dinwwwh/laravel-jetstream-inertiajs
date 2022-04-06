@@ -98,7 +98,7 @@ export default defineComponent({
         canResetPassword: Boolean,
         status: {
             type: String,
-            required: true,
+            default: null,
         },
     },
 
