@@ -1,0 +1,27 @@
+name: eslint
+
+on: [pull_request, push]
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - run: npm install # or yarn install
+
+      - uses: sibiraj-s/action-eslint@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }} # Optional
+          eslint-args: '--write'
+          extensions: 'js,ts,vue'
+          annotations: true
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'chore(js,ts,vue): eslint fixes'
