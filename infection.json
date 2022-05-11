@@ -1,0 +1,35 @@
+{
+    "source": {
+        "directories": ["app"],
+        "excludes": [
+            "Actions/Fortify",
+            "Actions/Jetstream",
+            "Console/Kernel.php",
+            "Exceptions",
+            "Http/Middleware",
+            "Http/Kernel.php",
+            "Providers"
+        ]
+    },
+    "phpUnit": {
+        "configDir": ""
+    },
+    "logs": {
+        "text": "infection.log",
+        "html": "infection.html"
+    },
+    "mutators": {
+        "@arithmetic": true,
+        "@boolean": true,
+        "@conditional_boundary": true,
+        "@conditional_negotiation": true,
+        "@number": true,
+        "@operator": true,
+        "@regex": true,
+        "@removal": true,
+        "@return_value": true,
+        "@sort": true,
+        "@unwrap": true
+    },
+    "testFramework": "pest"
+}
