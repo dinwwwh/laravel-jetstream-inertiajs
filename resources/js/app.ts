@@ -27,10 +27,13 @@ createInertiaApp({
         return page as any;
     },
     setup({ el, app, props, plugin }) {
-        createApp({ render: () => h(app, props) })
-            .use(plugin)
-            .mixin({ methods: { route: window.route } })
-            .mount(el);
+        const createdApp = createApp({ render: () => h(app, props) }).use(
+            plugin
+        );
+
+        createdApp.config.globalProperties.$route = window.route;
+
+        createdApp.mount(el);
     },
 });
 

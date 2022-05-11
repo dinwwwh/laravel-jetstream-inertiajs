@@ -2,12 +2,22 @@
 import lodash from 'lodash';
 import axios from 'axios';
 import ziggy from 'ziggy-js';
+import { createHeadManager, Inertia, Page } from '@inertiajs/inertia';
 
 declare global {
     interface Window {
         _: typeof lodash;
         axios: typeof axios;
         route: typeof ziggy;
+    }
+}
+
+declare module '@vue/runtime-core' {
+    interface ComponentCustomProperties {
+        $route: typeof ziggy;
+        $inertia: typeof Inertia;
+        $page: Page;
+        $headManager: ReturnType<typeof createHeadManager>;
     }
 }
 
