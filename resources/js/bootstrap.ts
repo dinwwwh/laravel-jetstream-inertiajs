@@ -4,11 +4,26 @@ import axios from 'axios';
 import ziggy from 'ziggy-js';
 import { createHeadManager, Inertia, Page } from '@inertiajs/inertia';
 
+type Trans = (
+    key: string,
+    replaces?: Record<string, string>,
+    local?: string | null
+) => string;
+type TransChoice = (
+    key: string,
+    number: number,
+    replaces?: Record<string, string>,
+    local?: string | null
+) => string;
+
 declare global {
     interface Window {
         _: typeof lodash;
         axios: typeof axios;
         route: typeof ziggy;
+        __: Trans;
+        trans: Trans;
+        transChoice: TransChoice;
     }
 }
 
@@ -18,6 +33,8 @@ declare module '@vue/runtime-core' {
         $inertia: typeof Inertia;
         $page: Page;
         $headManager: ReturnType<typeof createHeadManager>;
+        $trans: Trans;
+        $transChoice: TransChoice;
     }
 }
 

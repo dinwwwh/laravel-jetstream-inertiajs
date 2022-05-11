@@ -32,6 +32,8 @@ createInertiaApp({
         );
 
         createdApp.config.globalProperties.$route = window.route;
+        createdApp.config.globalProperties.$trans = window.trans;
+        createdApp.config.globalProperties.$transChoice = window.transChoice;
 
         createdApp.mount(el);
     },
