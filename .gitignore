@@ -26,3 +26,5 @@ package-lock.json
 
 infection.log
 infection.html
+
+build
