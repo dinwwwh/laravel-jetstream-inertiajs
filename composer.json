@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.1",
         "dinhdjj/laravel-js-localization": "^1.0",
+        "dinhdjj/laravel-typescript-transformer-extended": "^1.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "inertiajs/inertia-laravel": "^0.5.4",
