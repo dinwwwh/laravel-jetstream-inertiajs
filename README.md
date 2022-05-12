@@ -1,62 +1,45 @@
-# Jetstream Laravel + Inertiajs + Vite + typescript
+# [Project Name]
 
-A template for above powerful technique
+Below introduces & instructs you about the project.
 
+## Requirements
+
+- **PHP 8.1+**
+- **Nodejs 14+**
+- **NPM & Composer**
+- **common, curl, json, mbstring, mysql, xml, zip, openssl**
 
 ## Install dependencies
 
 ```bash
-    npm install
-    composer install
+    npm install --production
+
+    composer install --no-dev --no-interaction --no-plugins --optimize-autoloader
 ```
 
-## Generate helper files for php IDE
+## Initializing the project
 
-Special command `php artisan ide-helper:models --nowrite` require you connected database
+You should fill all the required information in `.env` file.
 
 ```bash
-    php artisan ide-helper:generate
-    php artisan ide-helper:meta
-    php artisan ide-helper:models --nowrite
+    php -r "file_exists('.env') || copy('.env.example', '.env');"
+    php artisan key:generate
+    php artisan migrate --seed
+    npm run build
 ```
 
-## Lint typescript files of vuejs
-
-A lint command for check issue typescript vue files. This command is powerful but used too much resource pc then I not add it to lint-staged and if add to lint-staged it not work correctly (Currently I don't know)
+## Optimizing the project
 
 ```bash
-    npm run lint:vue
+    php artisan optimize
+    php artisan view:cache
 ```
 
-## Handling 
-
-Recommend actions for you when a case occurred
-
-### Updated Models
-
-You should fresh `ide model helper file`
+## Commands should be run when source code is changed
 
 ```bash
-    php artisan ide-helper:models --nowrite
-```
-
-## Generate typescript
-
-Use the `spatie/laravel-typescript-transformer` to transform a php type to typescript
-
-Firstly you Secondly you should
- add `@typescript` phpdoc to php type
-
-```php
-    /** @typescript */
-    class FetchedCardType
-    {
-        //
-    }
-```
-
-Secondly you should run special command to generate it to typescript
-
-```bash
-    php artisan typescript:transform
+    php artisan optimize
+    php artisan view:cache
+    npm run build
+    php artisan migrate --seed
 ```
