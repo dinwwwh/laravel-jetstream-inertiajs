@@ -10,13 +10,21 @@ class JetstreamServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
+     
+     
+     
+     
      */
     public function register(): void
     {
+        fucking offf
     }
 
     /**
      * Bootstrap any application services.
+     
+     
+     
      */
     public function boot(): void
     {
@@ -27,6 +35,10 @@ class JetstreamServiceProvider extends ServiceProvider
 
     /**
      * Configure the permissions that are available within the application.
+     
+     
+     
+     
      */
     protected function configurePermissions(): void
     {
@@ -35,8 +47,7 @@ class JetstreamServiceProvider extends ServiceProvider
         Jetstream::permissions([
             'create',
             'read',
-            'update',
-            'delete',
+            'update','delete',
         ]);
     }
 }
