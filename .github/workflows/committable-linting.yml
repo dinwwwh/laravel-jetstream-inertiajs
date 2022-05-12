@@ -1,0 +1,94 @@
+name: Committable linting
+
+on:
+  pull_request:
+    paths:
+      - '**.js'
+      - '**.ts'
+      - '**.vue'
+      - '**.php'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.eslintrc.js'
+      - '.prettierrc'
+      - '.php-cs-fixer.dist.php'
+      - 'phpstan.neon'
+      - '.github/workflows/committable-linting.yml'
+  push:
+    paths:
+      - '**.js'
+      - '**.ts'
+      - '**.vue'
+      - '**.php'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.eslintrc.js'
+      - '.prettierrc'
+      - '.php-cs-fixer.dist.php'
+      - 'phpstan.neon'
+      - '.github/workflows/committable-linting.yml'
+
+jobs:
+  php-cs-fixer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Run PHP CS Fixer
+        uses: docker://oskarstark/php-cs-fixer-ga
+        with:
+          args: --config=.php-cs-fixer.dist.php --allow-risky=yes
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Php-cs-fixer Fixed!'
+          commit_options: '--no-verify'
+
+  eslint:
+    runs-on: ubuntu-latest
+    needs: [php-cs-fixer]
+    steps:
+      - uses: actions/checkout@v3
+      - run: git pull
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - run: npm install
+
+      - name: run eslint
+        run: npx eslint --fix "resources/js/**/*.{js,ts,vue}"
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Eslint Fixed!'
+          commit_options: '--no-verify'
+
+  prettier:
+    runs-on: ubuntu-latest
+    needs: [eslint]
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: git pull
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - run: npm install
+
+      - name: Run prettier
+        run: npx prettier --write "resources/js/**/*.{js,ts,vue}"
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Prettier Fixed!'
+          commit_options: '--no-verify'
