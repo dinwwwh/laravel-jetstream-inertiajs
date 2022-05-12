@@ -7,7 +7,7 @@ Below introduces & instructs you about the project.
 - **PHP 8.1+**
 - **Nodejs 14+**
 - **NPM & Composer**
-- **common, curl, json, mbstring, mysql, xml, zip, openssl**
+- **common, curl, json, mbstring, mysql, xml, zip, openssl, mysqldump**
 
 ## Install dependencies
 
