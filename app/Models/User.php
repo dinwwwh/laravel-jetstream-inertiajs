@@ -22,10 +22,6 @@ class User extends Authenticatable
      * The attributes that are mass assignable.
      *
      * @var string[]
-     
-     
-     
-     
      */
     protected $fillable = [
         'name',
@@ -49,10 +45,6 @@ class User extends Authenticatable
      * The attributes that should be cast.
      *
      * @var array
-     
-     
-     
-     
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
@@ -64,7 +56,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $appends = [
-        'profile_photo_url'
-        ,
+        'profile_photo_url',
     ];
 }
