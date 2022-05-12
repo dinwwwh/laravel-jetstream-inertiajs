@@ -1,5 +1,5 @@
 <template>
-    <Component :is="is" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <Component :is="is" class="mx-auto max-w-7xl sm:px-6 lg:px-8">
         <slot />
     </Component>
 </template>

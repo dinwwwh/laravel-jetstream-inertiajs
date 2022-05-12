@@ -3,14 +3,14 @@
 
     <header class="bg-white shadow">
         <JetContainer class="py-6 px-4">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="text-xl font-semibold leading-tight text-gray-800">
                 Dashboard
             </h2>
         </JetContainer>
     </header>
 
     <JetContainer is="main" class="py-12">
-        <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+        <div class="overflow-hidden bg-white shadow-xl sm:rounded-lg">
             <welcome />
         </div>
     </JetContainer>
