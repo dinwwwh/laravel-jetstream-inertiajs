@@ -22,6 +22,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.10",
+        "brianium/paratest": "^6.4",
         "fakerphp/faker": "^1.9.1",
         "friendsofphp/php-cs-fixer": "^3.4",
         "laravel/sail": "^1.0.1",
@@ -30,6 +31,7 @@
         "nunomaduro/larastan": "2.0",
         "pestphp/pest": "^1.21",
         "pestphp/pest-plugin-laravel": "^1.2",
+        "pestphp/pest-plugin-parallel": "^1.1",
         "phpunit/phpunit": "^9.5.10",
         "spatie/laravel-ignition": "^1.0",
         "spatie/laravel-typescript-transformer": "^2.1"
