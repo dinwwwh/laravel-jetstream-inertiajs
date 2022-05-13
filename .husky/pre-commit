@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npx lint-staged & php artisan test --parallel & ./vendor/bin/phpstan analyse --ansi & npx vue-tsc --noEmit --skipLibCheck
+npx lint-staged
