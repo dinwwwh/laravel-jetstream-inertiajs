@@ -8,6 +8,7 @@
             "Exceptions",
             "Http/Middleware",
             "Http/Kernel.php",
+            "Nova",
             "Providers"
         ]
     },
