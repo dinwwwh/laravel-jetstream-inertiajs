@@ -4,7 +4,7 @@
         "dev": "vite",
         "build": "vite build",
         "prepare": "husky install",
-        "lint:vue": "vue-tsc --noEmit --skipLibCheck"
+        "lint:ts": "vue-tsc --noEmit --skipLibCheck"
     },
     "dependencies": {
         "@inertiajs/inertia": "^0.10.1",
