@@ -32,10 +32,12 @@ jobs:
   php-cs-fixer:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      # https://stackoverflow.com/questions/57612428/cloning-private-github-repository-within-organisation-in-actions
+      # - name: Setup access to the private repository
+      #   run: eval `ssh-agent -s` && ssh-add - <<< '${{ secrets.PRIVATE_SSH_KEY }}'
+
+      - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          ref: ${{ github.head_ref }}
 
       - name: Run PHP CS Fixer
         uses: docker://oskarstark/php-cs-fixer-ga
@@ -52,16 +54,25 @@ jobs:
     runs-on: ubuntu-latest
     needs: [php-cs-fixer]
     steps:
-      - uses: actions/checkout@v3
-      - run: git pull
+      # https://stackoverflow.com/questions/57612428/cloning-private-github-repository-within-organisation-in-actions
+      # - name: Setup access to the private repository
+      #   run: eval `ssh-agent -s` && ssh-add - <<< '${{ secrets.PRIVATE_SSH_KEY }}'
 
-      - uses: actions/setup-node@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Update repository
+        run: git pull
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 16
 
-      - run: npm install
+      - name: Install dependencies
+        run: npm install
 
-      - name: run eslint
+      - name: Run eslint
         run: npx eslint --fix "resources/js/**/*.{js,ts,vue}"
 
       - name: Commit changes
@@ -74,15 +85,23 @@ jobs:
     runs-on: ubuntu-latest
     needs: [eslint]
     steps:
-      - uses: actions/checkout@v3
+      # https://stackoverflow.com/questions/57612428/cloning-private-github-repository-within-organisation-in-actions
+      # - name: Setup access to the private repository
+      #   run: eval `ssh-agent -s` && ssh-add - <<< '${{ secrets.PRIVATE_SSH_KEY }}'
 
-      - run: git pull
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3
+      - name: Update repository
+        run: git pull
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 16
 
-      - run: npm install
+      - name: Install dependencies
+        run: npm install
 
       - name: Run prettier
         run: npx prettier --write "resources/js/**/*.{js,ts,vue}"

@@ -9,7 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      # https://stackoverflow.com/questions/57612428/cloning-private-github-repository-within-organisation-in-actions
+      # - name: Setup access to the private repository
+      #   run: eval `ssh-agent -s` && ssh-add - <<< '${{ secrets.PRIVATE_SSH_KEY }}'
+
+      - name: Checkout repository
         uses: actions/checkout@v3
         with:
           ref: main

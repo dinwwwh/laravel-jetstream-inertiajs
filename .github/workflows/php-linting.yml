@@ -17,16 +17,20 @@ jobs:
     name: phpstan
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      # https://stackoverflow.com/questions/57612428/cloning-private-github-repository-within-organisation-in-actions
+      # - name: Setup access to the private repository
+      #   run: eval `ssh-agent -s` && ssh-add - <<< '${{ secrets.PRIVATE_SSH_KEY }}'
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.1'
-          coverage: none
 
-      - name: Install composer dependencies
-        uses: ramsey/composer-install@v1
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-progress --prefer-dist
 
       - name: Run PHPStan
         run: ./vendor/bin/phpstan --error-format=github
